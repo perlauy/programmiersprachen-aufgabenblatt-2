@@ -1,4 +1,5 @@
 #include "vec2.hpp"
+#include "mat2.hpp"
 
 #define CATCH_CONFIG_RUNNER
 #include <catch.hpp>
@@ -136,6 +137,25 @@ TEST_CASE (" vec2_operations ", "[vec2_operations]")
   REQUIRE(vector_1_divided_2.y == Approx(0.75f));
 }
 
+
+TEST_CASE (" matrix ", "[matrix]")
+{
+  Mat2 matrix_1{2.f, 1.5f, 1.f, 2.f};
+  Mat2 matrix_2{3.f, -5.f, -1.5f, 0.f};
+  Mat2 matrix_default;
+
+  Mat2 matrix_1_by_2 = matrix_1 * matrix_2;
+  REQUIRE(matrix_1_by_2.e_00 == Approx(3.75f));
+  REQUIRE(matrix_1_by_2.e_01 == Approx(-10.f));
+  REQUIRE(matrix_1_by_2.e_10 == Approx(0.f));
+  REQUIRE(matrix_1_by_2.e_11 == Approx(-5.f));
+
+  Mat2 matrix_1_by_default = matrix_1 * matrix_default;
+  REQUIRE(matrix_1_by_default.e_00 == Approx(2.f));
+  REQUIRE(matrix_1_by_default.e_01 == Approx(1.5f));
+  REQUIRE(matrix_1_by_default.e_10 == Approx(1.f));
+  REQUIRE(matrix_1_by_default.e_11 == Approx(2.f));
+}
 
 int main(int argc, char *argv[])
 {
