@@ -157,6 +157,41 @@ TEST_CASE (" matrix ", "[matrix]")
   REQUIRE(matrix_1_by_default.e_11 == Approx(2.f));
 }
 
+TEST_CASE (" matrix_operations ", "[matrix_operations]")
+{
+  Mat2 matrix_1{2.f, 1.5f, -1.f, 2.f};  
+  Vec2 vector{2.f, -3.f};
+  Mat2 matrix_default;
+
+  Vec2 multiply_result_1 = matrix_1 * vector;
+  REQUIRE(multiply_result_1.x == Approx(-.5f));
+  REQUIRE(multiply_result_1.y == Approx(-8.f));
+
+  Vec2 multiply_result_2 = vector * matrix_1;
+  REQUIRE(multiply_result_2.x == Approx(-.5f));
+  REQUIRE(multiply_result_2.y == Approx(-8.f));
+
+  Mat2 inversed_matrix = inverse(matrix_1);
+  REQUIRE(inversed_matrix.e_00 == Approx(0.363636f));
+  REQUIRE(inversed_matrix.e_01 == Approx(-0.272727f));
+  REQUIRE(inversed_matrix.e_10 == Approx(0.181818f));
+  REQUIRE(inversed_matrix.e_11 == Approx(0.363636f));
+
+  Mat2 transposed_matrix = transpose(matrix_1);
+  REQUIRE(transposed_matrix.e_00 == Approx(2.f));
+  REQUIRE(transposed_matrix.e_01 == Approx(-1.f));
+  REQUIRE(transposed_matrix.e_10 == Approx(1.5f));
+  REQUIRE(transposed_matrix.e_11 == Approx(2.f));
+
+  Mat2 rotation_matrix = make_rotation_mat2(0.26179938f); //15 in radians
+  REQUIRE(rotation_matrix.e_00 == Approx(0.9659258f));
+  REQUIRE(rotation_matrix.e_01 == Approx(-.2588190f));
+  REQUIRE(rotation_matrix.e_10 == Approx(0.2588190f));
+  REQUIRE(rotation_matrix.e_11 == Approx(0.9659258f));
+
+
+}
+
 int main(int argc, char *argv[])
 {
   return Catch::Session().run(argc, argv);

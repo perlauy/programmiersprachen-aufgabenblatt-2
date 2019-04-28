@@ -1,4 +1,7 @@
+#include "vec2.hpp"
 #include "mat2.hpp"
+
+#include <cmath>
 
 Mat2& Mat2::operator*=(Mat2 const& m) {
   Mat2 temp{*this};
@@ -11,6 +14,41 @@ Mat2& Mat2::operator*=(Mat2 const& m) {
   return *this;
 }
 
+float Mat2::det() const {
+  return e_00 * e_11 - e_01 * e_10;
+};
+
+
 Mat2 operator*(Mat2 const& m1, Mat2 const& m2) {
   return Mat2(m1) *= m2;
+};
+
+Vec2 operator*(Mat2 const& m, Vec2 const& v) {
+  Vec2 temp{m.e_00 * v.x + m.e_01*v.y, m.e_10 * v.x + m.e_11 * v.y};
+  return temp;
+};
+
+Vec2 operator*(Vec2 const& v, Mat2 const& m) {
+  Vec2 temp{m.e_00 * v.x + m.e_01*v.y, m.e_10 * v.x + m.e_11 * v.y};
+  return temp;
+};
+
+Mat2 inverse(Mat2 const& m) {
+  if (m.det() != 0) {
+    float inv_det = 1 / m.det();
+    Mat2 temp{inv_det * m.e_11, inv_det * -m.e_01, inv_det * -m.e_10, inv_det * m.e_00};
+    // TODO: What to return if there is no inverse?
+    return temp;
+  }
+};
+
+Mat2 transpose(Mat2 const& m) {
+  Mat2 temp{m.e_00, m.e_10, m.e_01, m.e_11};
+  return temp;
+};
+
+Mat2 make_rotation_mat2(float phi) {
+  // phi in radians
+  Mat2 matrix{cos(phi), -sin(phi), sin(phi), cos(phi)};
+  return matrix;
 };
