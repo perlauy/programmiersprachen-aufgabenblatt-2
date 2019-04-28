@@ -1,16 +1,18 @@
-#ifndef RECTANGLE_HPP
-#define RECTANGLE_HPP
+#ifndef RECT_HPP
+#define RECT_HPP
 
 #include "vec2.hpp"
 #include "color.hpp"
 
-class Rectangle {
+class Rect {
   
   public:
-                Rectangle();
-                Rectangle(Rectangle const& r);
-                Rectangle(Vec2 const& min, Vec2 const& max);
+                Rect();
+                Rect(Rect const& r);
+                Rect(Vec2 const& min, Vec2 const& max);
 
+    float       circumference() const;
+    
     Vec2        min() const;
     void        min(Vec2 const& pt);
     Vec2        max() const;

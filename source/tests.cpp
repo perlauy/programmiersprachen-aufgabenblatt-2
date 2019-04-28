@@ -1,6 +1,8 @@
 #include "vec2.hpp"
 #include "mat2.hpp"
 #include "color.hpp"
+#include "circle.hpp"
+#include "rect.hpp"
 
 #define CATCH_CONFIG_RUNNER
 #include <catch.hpp>
@@ -208,6 +210,21 @@ TEST_CASE (" color ", "[color]")
  // REQUIRE(color_2.r == Approx(0.f));
  // REQUIRE(color_2.g == Approx(1.f));
  // REQUIRE(color_2.b == Approx(0.f));
+}
+
+TEST_CASE (" circumferences ", "[circumferences]")
+{
+  Circle circle_default;
+  REQUIRE(circle_default.circumference() == Approx(6.283185f));
+
+  Circle circle{Vec2{-2.f, 1.f}, 4.f};
+  REQUIRE(circle.circumference() == Approx(25.13274f));
+
+  Rect rectangle_default;
+  REQUIRE(rectangle_default.circumference() == Approx(5.5f));
+
+  Rect rectangle{Vec2{-1.f,2.f}, Vec2{2.f, 4.f}};
+  REQUIRE(rectangle.circumference() == Approx(10.f));
 }
 
 int main(int argc, char *argv[])

@@ -10,7 +10,9 @@ class Circle {
                    Circle();
                    Circle(Circle const& c);
                    Circle(Vec2 const& center, float radius);
-
+  
+    double         circumference() const;
+    
     Vec2           center() const;
     void           center(Vec2 const& center);
     float          radius() const;

@@ -2,6 +2,9 @@
 #include "vec2.hpp"
 #include "color.hpp"
 
+#define _USE_MATH_DEFINES
+#include <cmath>
+
 Circle::Circle() :
   center_{0.f, 0.f},
   radius_{1.f}
@@ -32,4 +35,8 @@ float Circle::radius() const {
 void Circle::radius(float radius) {
   radius_ = radius;
 }
-  
+
+double Circle::circumference() const {
+  return 2 * radius_ * M_PI;
+};
+
