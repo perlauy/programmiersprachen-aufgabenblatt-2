@@ -1,8 +1,11 @@
+#define _USE_MATH_DEFINES
+
 #include "circle.hpp"
 #include "vec2.hpp"
+#include "mat2.hpp"
 #include "color.hpp"
+#include "window.hpp"
 
-#define _USE_MATH_DEFINES
 #include <cmath>
 
 Circle::Circle() :
@@ -41,5 +44,20 @@ void Circle::radius(float radius) {
 
 double Circle::circumference() const {
   return 2 * radius_ * M_PI;
-};
+}
 
+void Circle::draw(Window const& window, unsigned int facets) const {
+
+  Mat2 rotation_matrix = make_rotation_mat2(2 * M_PI / facets);
+  Vec2 start_point{center_.x + radius_, center_.y};
+  Vec2 next_point;
+
+  for(unsigned int i = 0; i < facets; i++) {
+    next_point = start_point * rotation_matrix;
+    
+    window.draw_line(start_point.x, start_point.y, next_point.x, next_point.y, color_.r, color_.g, color_.b);
+    
+    start_point = next_point;
+  }
+
+}

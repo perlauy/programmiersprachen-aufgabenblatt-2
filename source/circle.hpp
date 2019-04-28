@@ -3,6 +3,7 @@
 
 #include "vec2.hpp"
 #include "color.hpp"
+#include "window.hpp"
 
 class Circle {
   
@@ -12,6 +13,7 @@ class Circle {
                    Circle(Vec2 const& center, float radius, Color const& color);
   
     double         circumference() const;
+    void           draw(Window const& window, unsigned int facets) const;
     
     Vec2           center() const;
     void           center(Vec2 const& center);

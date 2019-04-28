@@ -14,8 +14,8 @@ TEST_CASE (" vec2_initializierung ", "[vec2_initializierung]")
 
   REQUIRE(vector_with_parameters.x == Approx(2.f));
   REQUIRE(vector_with_parameters.y == Approx(5.5f));
-  REQUIRE(vector_with_no_parameters.x == Approx(0.f));
-  REQUIRE(vector_with_no_parameters.y == Approx(0.f));  
+  REQUIRE(vector_with_no_parameters.x == 0.0f);
+  REQUIRE(vector_with_no_parameters.y == 0.0f);  
 }
 
 TEST_CASE (" vec2_addition ", "[vec2_addition]")
@@ -80,8 +80,8 @@ TEST_CASE (" vec2_scale ", "[vec2_scale]")
   REQUIRE(vector_1.y == Approx(-1.5f));
 
   vector_1 *= 0;
-  REQUIRE(vector_1.x == Approx(0.f));
-  REQUIRE(vector_1.y == Approx(0.f));
+  REQUIRE(vector_1.x == 0.0f);
+  REQUIRE(vector_1.y == 0.0f);
 
 //  vector_1 /= 0; //catch?
 //  REQUIRE(vector_1.x == Approx(3.9f));
@@ -132,8 +132,8 @@ TEST_CASE (" vec2_operations ", "[vec2_operations]")
   REQUIRE(minus_2_by_vector_1.y == Approx(-3.f));
 
   Vec2 vector_1_by_0 = vector_1 * 0;
-  REQUIRE(vector_1_by_0.x == Approx(0.f));
-  REQUIRE(vector_1_by_0.y == Approx(0.f));
+  REQUIRE(vector_1_by_0.x == 0.0f);
+  REQUIRE(vector_1_by_0.y == 0.0f);
 
   Vec2 vector_1_divided_2 = vector_1 / 2;
   REQUIRE(vector_1_divided_2.x == Approx(1.f));

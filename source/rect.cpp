@@ -1,6 +1,8 @@
 #include "rect.hpp"
 #include "vec2.hpp"
 #include "color.hpp"
+#include "window.hpp"
+
 
 #include <cmath>
 
@@ -40,4 +42,11 @@ void Rect::max(Vec2 const& pt) {
 
 float Rect::circumference() const {
   return 2 * (abs(max_.x - min_.x) + abs(max_.y - min_.y));
+}
+
+void Rect::draw(Window const& window) const {
+  window.draw_line(min_.x, min_.y, min_.x, max_.y, color_.r, color_.g, color_.b);
+  window.draw_line(min_.x, max_.y, max_.x, max_.y, color_.r, color_.g, color_.b);
+  window.draw_line(max_.x, max_.y, max_.x, min_.y, color_.r, color_.g, color_.b);
+  window.draw_line(max_.x, min_.y, min_.x, min_.y, color_.r, color_.g, color_.b);
 }
