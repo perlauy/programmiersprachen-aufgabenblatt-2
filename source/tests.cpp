@@ -1,5 +1,6 @@
 #include "vec2.hpp"
 #include "mat2.hpp"
+#include "color.hpp"
 
 #define CATCH_CONFIG_RUNNER
 #include <catch.hpp>
@@ -188,8 +189,25 @@ TEST_CASE (" matrix_operations ", "[matrix_operations]")
   REQUIRE(rotation_matrix.e_01 == Approx(-.2588190f));
   REQUIRE(rotation_matrix.e_10 == Approx(0.2588190f));
   REQUIRE(rotation_matrix.e_11 == Approx(0.9659258f));
+}
 
+TEST_CASE (" color ", "[color]")
+{
+  Color color_1{0.2f, 0.15f, 0.f};
+  Color color_default;
+  Color color_2{-1.f, 3.3f, 0.f};
 
+  REQUIRE(color_1.r == Approx(0.2f));
+  REQUIRE(color_1.g == Approx(0.15f));
+  REQUIRE(color_1.b == Approx(0.f));
+
+  REQUIRE(color_default.r == Approx(0.5f));
+  REQUIRE(color_default.g == Approx(0.5f));
+  REQUIRE(color_default.b == Approx(0.5f));
+
+ // REQUIRE(color_2.r == Approx(0.f));
+ // REQUIRE(color_2.g == Approx(1.f));
+ // REQUIRE(color_2.b == Approx(0.f));
 }
 
 int main(int argc, char *argv[])
