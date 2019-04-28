@@ -217,13 +217,13 @@ TEST_CASE (" circumferences ", "[circumferences]")
   Circle circle_default;
   REQUIRE(circle_default.circumference() == Approx(6.283185f));
 
-  Circle circle{Vec2{-2.f, 1.f}, 4.f};
+  Circle circle{Vec2{-2.f, 1.f}, 4.f, Color{0.f,0.f,1.f}};
   REQUIRE(circle.circumference() == Approx(25.13274f));
 
   Rect rectangle_default;
-  REQUIRE(rectangle_default.circumference() == Approx(5.5f));
+  REQUIRE(rectangle_default.circumference() == Approx(4.f));
 
-  Rect rectangle{Vec2{-1.f,2.f}, Vec2{2.f, 4.f}};
+  Rect rectangle{Vec2{-1.f,2.f}, Vec2{2.f, 4.f}, Color{1.f,0.f,0.f}};
   REQUIRE(rectangle.circumference() == Approx(10.f));
 }
 

@@ -9,7 +9,7 @@ class Rect {
   public:
                 Rect();
                 Rect(Rect const& r);
-                Rect(Vec2 const& min, Vec2 const& max);
+                Rect(Vec2 const& min, Vec2 const& max, Color const& color);
 
     float       circumference() const;
     
@@ -17,10 +17,13 @@ class Rect {
     void        min(Vec2 const& pt);
     Vec2        max() const;
     void        max(Vec2 const& pt);
+    Color       color() const;
+    void        color(Color const& color);
 
   private:
     Vec2  min_;
     Vec2  max_;
+    Color color_;
 };
 
 #endif
