@@ -14,6 +14,7 @@ class Rect {
 
     float       circumference() const;
     void        draw(Window const& window) const;
+    void        draw(Window const& window, float weight) const;
 
     Vec2        min() const;
     void        min(Vec2 const& pt);

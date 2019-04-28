@@ -50,3 +50,11 @@ void Rect::draw(Window const& window) const {
   window.draw_line(max_.x, max_.y, max_.x, min_.y, color_.r, color_.g, color_.b);
   window.draw_line(max_.x, min_.y, min_.x, min_.y, color_.r, color_.g, color_.b);
 }
+
+void Rect::draw(Window const& window, float weight) const {
+  window.draw_line(min_.x, min_.y, min_.x, max_.y, color_.r, color_.g, color_.b, weight);
+  window.draw_line(min_.x, max_.y, max_.x, max_.y, color_.r, color_.g, color_.b, weight);
+  window.draw_line(max_.x, max_.y, max_.x, min_.y, color_.r, color_.g, color_.b, weight);
+  window.draw_line(max_.x, min_.y, min_.x, min_.y, color_.r, color_.g, color_.b, weight);
+}
+

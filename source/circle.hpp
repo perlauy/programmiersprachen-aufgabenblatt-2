@@ -10,11 +10,12 @@ class Circle {
   public:
                    Circle();
                    Circle(Circle const& c);
-                   Circle(Vec2 const& center, float radius, Color const& color);
+                   Circle(Vec2 const& center, float radius, Color const& color, Color const& highlight_color);
   
     double         circumference() const;
-    void           draw(Window const& window, unsigned int facets) const;
-    
+    void           draw(Window const& window, unsigned int facets, bool highlight = false) const;
+    void           draw(Window const& window, unsigned int facets, float weight, bool highlight = false) const;
+
     Vec2           center() const;
     void           center(Vec2 const& center);
     float          radius() const;
@@ -26,6 +27,7 @@ class Circle {
     Vec2  center_;
     float radius_;
     Color color_;
+    Color highlight_color_;
 };
 
 #endif
