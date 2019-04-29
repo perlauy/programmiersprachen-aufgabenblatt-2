@@ -16,13 +16,6 @@ class Circle {
     void           draw(Window const& window, unsigned int facets, bool highlight = false) const;
     void           draw(Window const& window, unsigned int facets, float weight, bool highlight = false) const;
 
-    Vec2           center() const;
-    void           center(Vec2 const& center);
-    float          radius() const;
-    void           radius(float radius);
-    Color          color() const;
-    void           color(Color const& color);
-
   private:
     Vec2  center_;
     float radius_;

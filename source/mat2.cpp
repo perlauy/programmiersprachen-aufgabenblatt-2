@@ -2,6 +2,8 @@
 #include "mat2.hpp"
 
 #include <cmath>
+#include <iostream>
+
 
 Mat2& Mat2::operator*=(Mat2 const& m) {
   Mat2 temp{*this};
@@ -37,8 +39,11 @@ Mat2 inverse(Mat2 const& m) {
   if (m.det() != 0) {
     float inv_det = 1 / m.det();
     Mat2 temp{inv_det * m.e_11, inv_det * -m.e_01, inv_det * -m.e_10, inv_det * m.e_00};
-    // TODO: What to return if there is no inverse?
     return temp;
+  } else {
+    std::cout << "This matrix is not inversable!" << std::endl;
+    std::cout << std::endl;
+    return m;
   }
 };
 

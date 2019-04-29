@@ -16,13 +16,6 @@ class Rect {
     void        draw(Window const& window) const;
     void        draw(Window const& window, float weight) const;
 
-    Vec2        min() const;
-    void        min(Vec2 const& pt);
-    Vec2        max() const;
-    void        max(Vec2 const& pt);
-    Color       color() const;
-    void        color(Color const& color);
-
   private:
     Vec2  min_;
     Vec2  max_;

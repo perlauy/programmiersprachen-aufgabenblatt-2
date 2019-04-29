@@ -3,7 +3,6 @@
 #include "color.hpp"
 #include "window.hpp"
 
-
 #include <cmath>
 
 Rect::Rect() :
@@ -23,22 +22,6 @@ Rect::Rect(Vec2 const& min, Vec2 const& max, Color const& color) :
   max_{max},
   color_{color}
 {}
-
-Vec2 Rect::min() const {
-  return min_;
-}
-
-void Rect::min(Vec2 const& pt) {
-  min_ = pt;
-}
-
-Vec2 Rect::max() const {
-  return max_;
-}
-
-void Rect::max(Vec2 const& pt) {
-  max_ = pt;
-}
 
 float Rect::circumference() const {
   return 2 * (abs(max_.x - min_.x) + abs(max_.y - min_.y));

@@ -1,5 +1,8 @@
 #include "vec2.hpp"
 
+#include <iostream>
+
+
 Vec2& Vec2::operator+=(Vec2 const& v) {
   x += v.x;
   y += v.y;
@@ -19,10 +22,13 @@ Vec2& Vec2::operator*=(float s) {
 }
 
 Vec2& Vec2::operator/=(float s) {
-//  if (s != 0) {
-    x /= s;
-    y /= s;
-//  }
+  if (s == 0) {
+    std::cout << "Not able to divide between 0" << std::endl;
+    std::cout << std::endl;
+    return *this;
+  }
+  x /= s;
+  y /= s;
   return *this;
 }
 

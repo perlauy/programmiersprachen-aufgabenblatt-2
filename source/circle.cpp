@@ -7,8 +7,6 @@
 #include "window.hpp"
 
 #include <cmath>
-#include <iostream>
-
 
 
 Circle::Circle() :
@@ -31,22 +29,6 @@ Circle::Circle(Vec2 const& center, float radius, Color const& color, Color const
   color_{color},
   highlight_color_{highlight_color}
 {}
-
-Vec2 Circle::center() const {
-  return center_;
-}
-
-void Circle::center(Vec2 const& center) {
-  center_ = center;
-}
-
-float Circle::radius() const {
-  return radius_;
-}
-
-void Circle::radius(float radius) {
-  radius_ = radius;
-}
 
 double Circle::circumference() const {
   return 2 * radius_ * M_PI;
