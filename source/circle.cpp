@@ -7,6 +7,9 @@
 #include "window.hpp"
 
 #include <cmath>
+#include <iostream>
+
+
 
 Circle::Circle() :
   center_{0.f, 0.f},
@@ -69,12 +72,13 @@ void Circle::draw(Window const& window, unsigned int facets, bool highlight) con
 void Circle::draw(Window const& window, unsigned int facets, float weight, bool highlight) const {
 
   Mat2 rotation_matrix = make_rotation_mat2(2 * M_PI / facets);
-  Vec2 start_point{center_.x + radius_, center_.y};
+  Vec2 start_point{(center_.x + radius_), center_.y};
   Vec2 next_point;
   Color use_color{highlight ? highlight_color_ : color_};
 
   for(unsigned int i = 0; i < facets; i++) {
-    next_point = start_point * rotation_matrix;
+    next_point = (start_point - center_) * rotation_matrix;
+    next_point += center_;
     
     window.draw_line(start_point.x, start_point.y, next_point.x, next_point.y, use_color.r, use_color.g, use_color.b, weight);
     

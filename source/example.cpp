@@ -54,10 +54,10 @@ int main(int argc, char* argv[])
     
     win.draw_text(text_offset_x, text_offset_y, font_size, display_text);
 
-    Circle c{{0.f, 20.f}, 50.f, {0.f,0.5f,1.0f}, {0.f,1.f,1.0f}};
+    Circle c{{60.f, 120.f}, 60.f, {0.f,0.5f,1.0f}, {0.f,1.f,1.0f}};
     c.draw(win, 30, 4.f, true);
     
-    Rect r{{10.f, 10.f}, {50.f,50.f}, {1.f,0.2f,0.f}};
+    Rect r{{200.f, 100.f}, {50.f,50.f}, {1.f,0.2f,0.f}};
     r.draw(win, 2.f);
 
     win.update();
