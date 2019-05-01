@@ -41,3 +41,10 @@ void Rect::draw(Window const& window, float weight) const {
   window.draw_line(max_.x, min_.y, min_.x, min_.y, color_.r, color_.g, color_.b, weight);
 }
 
+bool Rect::is_inside(Vec2 point) const {
+  return point.x >= min_.x
+         && point.x <= max_.x
+         && point.y >= min_.y
+         && point.y <= max_.y;
+}
+

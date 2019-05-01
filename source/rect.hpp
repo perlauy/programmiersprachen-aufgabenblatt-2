@@ -15,6 +15,7 @@ class Rect {
     float       circumference() const;
     void        draw(Window const& window) const;
     void        draw(Window const& window, float weight) const;
+    bool        is_inside(Vec2 point) const;
 
   private:
     Vec2  min_;

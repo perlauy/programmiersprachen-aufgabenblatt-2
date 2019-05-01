@@ -69,3 +69,7 @@ void Circle::draw(Window const& window, unsigned int facets, float weight, bool 
 
 }
 
+bool Circle::is_inside(Vec2 point) const {
+  return pow(radius_, 2) > (pow(point.x - center_.x, 2) + pow(point.y - center_.y, 2));
+};
+

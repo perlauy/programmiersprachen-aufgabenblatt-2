@@ -4,7 +4,7 @@
 #include <GLFW/glfw3.h>
 #include <utility>
 #include <cmath>
-
+#include <array>
 
 int main(int argc, char* argv[])
 {
@@ -54,11 +54,23 @@ int main(int argc, char* argv[])
     
     win.draw_text(text_offset_x, text_offset_y, font_size, display_text);
 
-    Circle c{{60.f, 120.f}, 60.f, {0.f,0.5f,1.0f}, {0.f,1.f,1.0f}};
-    c.draw(win, 30, 4.f, true);
-    
-    Rect r{{200.f, 100.f}, {50.f,50.f}, {1.f,0.2f,0.f}};
-    r.draw(win, 2.f);
+    Circle c_1{{400.f, 400.f}, 100.f, {0.f,0.5f,1.0f}, {0.f,1.f,1.0f}};
+    Circle c_2{{120.f, 600.f}, 50.f, {0.2f,0.6f,0.6f}, {1.f,1.f,1.f}};
+    std::array<Circle, 2> array_circles = {c_1, c_2};
+
+    for (auto const& c : array_circles) { 
+      bool highlight_c = c.is_inside({(float)mouse_position.first, (float)mouse_position.second});
+      c.draw(win, 36, 2.f, highlight_c);
+    }
+
+    Rect r_1{{50.f, 50.f}, {200.f,100.f}, {1.f,0.2f,0.f}};
+    Rect r_2{{200.f, 100.f}, {600.f,320.f}, {1.f,1.f,0.f}};
+    std::array<Rect, 2> array_rect = {r_1, r_2};
+
+    for (auto const& r : array_rect) { 
+      bool highlight_r = r.is_inside({(float)mouse_position.first, (float)mouse_position.second});
+      r.draw(win, 2.f + (2.f * highlight_r));
+    }
 
     win.update();
   }

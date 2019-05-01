@@ -227,6 +227,21 @@ TEST_CASE (" circumferences ", "[circumferences]")
   REQUIRE(rectangle.circumference() == Approx(10.f));
 }
 
+
+TEST_CASE (" is_inside ", "[is_inside]")
+{
+
+  Rect rectangle{Vec2{-1.f,2.f}, Vec2{2.f, 4.f}, Color{1.f,0.f,0.f}};
+  REQUIRE(rectangle.is_inside(Vec2{0.f,3.f}) == true);
+  REQUIRE(rectangle.is_inside(Vec2{0.f,5.f}) == false);
+
+
+  Circle circle{Vec2{-2.f, 1.f}, 4.f, Color{0.f,0.f,1.f}, Color{0.5f,0.5f,1.f}};
+  REQUIRE(circle.is_inside(Vec2{0.f,0.f}) == true);
+  REQUIRE(circle.is_inside(Vec2{5.f,-2.f}) == false);
+  
+}
+
 int main(int argc, char *argv[])
 {
   return Catch::Session().run(argc, argv);
