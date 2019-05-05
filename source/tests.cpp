@@ -158,6 +158,12 @@ TEST_CASE (" matrix ", "[matrix]")
   REQUIRE(matrix_1_by_default.e_01 == Approx(1.5f));
   REQUIRE(matrix_1_by_default.e_10 == Approx(1.f));
   REQUIRE(matrix_1_by_default.e_11 == Approx(2.f));
+
+  matrix_1 *= matrix_2;
+  REQUIRE(matrix_1.e_00 == Approx(3.75f));
+  REQUIRE(matrix_1.e_01 == Approx(-10.f));
+  REQUIRE(matrix_1.e_10 == Approx(0.f));
+  REQUIRE(matrix_1.e_11 == Approx(-5.f));
 }
 
 TEST_CASE (" matrix_operations ", "[matrix_operations]")

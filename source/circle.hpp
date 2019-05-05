@@ -8,14 +8,14 @@
 class Circle {
   
   public:
-                   Circle();
-                   Circle(Circle const& c);
-                   Circle(Vec2 const& center, float radius, Color const& color, Color const& highlight_color);
+              Circle();
+              Circle(Circle const& c);
+              Circle(Vec2 const& center, float radius, Color const& color, Color const& highlight_color);
   
-    double         circumference() const;
-    void           draw(Window const& window, unsigned int facets, bool highlight = false) const;
-    void           draw(Window const& window, unsigned int facets, float weight, bool highlight = false) const;
-    bool           is_inside(Vec2 point) const;
+    double    circumference() const;
+    void      draw(Window const& window, unsigned int facets, bool highlight = false) const;
+    void      draw(Window const& window, unsigned int facets, float weight, bool highlight = false) const;
+    bool      is_inside(Vec2 point) const;
 
   private:
     Vec2  center_;
